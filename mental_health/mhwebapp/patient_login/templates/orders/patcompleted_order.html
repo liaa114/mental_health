@@ -1,0 +1,84 @@
+{% extends "patientbase.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/pat_order.css' %}">
+<div class="container" style="margin-top: 80px;">
+    <div class="orders_request">
+        <div class="request__content">
+            <div class="request_items">
+                <div class="menu-order"><a href="pat_orders_request">Request Order</a></div>
+                <div class="menu-order"><a href="pat_orders_onprogres">On Progres</a></div>
+                <div class="menu-order"><a class="active" href="pat_orders_completed">Completed</a></div>
+            </div>
+            <div class="card-container" style="margin-top: 20px;">
+                <center><h2>Completed Consultations:</h2></center>
+                <div class="request_order" style="flex-direction: column;">
+                    {% for consultation in accepted_consultations %}
+                        <div class="card mb-4" style="border-radius: 15px; width: 600px; margin-top: 20px;">
+                            <div class="card-body">
+                                <div class="d-flex text-black">
+                                    <div class="flex-shrink-0">
+                                        {% if consultation.psychologist.photo %}
+                                            <img src="{{ consultation.psychologist.photo.url }}" alt="Psychologist Photo" class="img-fluid" style="width: 150px; border-radius: 10px;">
+                                        {% endif %}
+                                    </div>
+                                    <div class="flex-grow-1 ms-3 d-flex flex-column justify-content-between">
+                                        <div style="margin: 30px 20px;">
+                                            <h3>{{ consultation.psychologist.user.username }}</h3>
+                                            <h5>{{ consultation.date }}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="rating-buttons mt-3">
+                                        {% if not consultation.rating_given %}
+                                            <!-- Tampilkan form rating hanya jika konsultasi belum memiliki rating -->
+                                            <form method="post" action="{% url 'rate_consultation' consultation_id=consultation.cons_id %}">
+                                                {% csrf_token %}
+                                                <button class="btn btn-link" style="color: green; font-size: 80px; margin-right: 10px;" type="submit" name="rating" value="Satisfied">
+                                                    <i class="fa-regular fa-thumbs-up"></i>
+                                                </button>
+                                                <button class="btn btn-link" style="color: red; font-size: 80px; margin-right: 60px;" type="submit" name="rating" value="Not Satisfied">
+                                                    <i class="fa-regular fa-thumbs-down"></i>
+                                                </button>
+                                            </form>
+                                        {% else %}
+                                            <!-- Tampilkan pesan jika konsultasi sudah memiliki rating -->
+                                            <h1 style="margin-top: 45px; margin-right: 20px;">Ratings have been given</h1>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <img src="{% static 'img/nodata.png' %}" style="width: 200px; height: 200px; margin-top: 20px;">
+                    {% endfor %}
+                </div>
+                <center><h2>Rejected Consultations:</h2></center>
+                <div class="request-order" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                    {% for consultation in rejected_consultations %}
+                        <div class="card mb-4" style="border-radius: 15px; width: 600px; margin-top: 20px;">
+                            <div class="card-body">
+                                <div class="d-flex text-black">
+                                    <div class="flex-shrink-0">
+                                        {% if consultation.psychologist.photo %}
+                                            <img src="{{ consultation.psychologist.photo.url }}" alt="Psychologist Photo" class="img-fluid" style="width: 150px; border-radius: 10px;">
+                                        {% endif %}
+                                    </div>
+                                    <div class="flex-grow-1 ms-3 d-flex flex-column justify-content-between">
+                                        <div style="margin: 30px 20px;">
+                                            <h3>{{ consultation.psychologist.user.username }}</h3><br>
+                                            <h5>{{ consultation.date }}</h5><br>
+                                            <h3>rejected</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <center><img src="{% static 'img/nodata.png' %}" style="width: 200px; height: 200px; margin-top: 20px;"></center>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

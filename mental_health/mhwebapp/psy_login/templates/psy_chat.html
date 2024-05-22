@@ -1,0 +1,44 @@
+{% extends "psybase.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/psychat.css' %}">
+<section style="margin-top: 90px;">
+    <div class="container">
+        <div class="chat-box">
+            <div class="client">
+                <img src="{{ consultation.patient.photo.url }}" alt="Patient Photo">
+                <div class="client-info">
+                    <h2>{{ consultation.patient.user.username }}</h2>
+                </div>
+                <div style="margin-left: 260px;">
+                    <a href="{% url 'orders_onprogres' %}">
+                        <i class="fa-regular fa-circle-xmark fa-2xl" style="color: white; font-size: 40px;"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="chats" style="height: 300px; overflow-y: scroll;">
+                {% for chat in chats %}
+                    {% if chat.sender == consultation.psychologist.user %}
+                        <div class="my-chat">
+                            <h4>{{ chat.content }}</h4>
+                            <p>{{ chat.time }}</p>
+                        </div>
+                    {% else %}
+                        <div class="client-chat">
+                            <h4>{{ chat.content }}</h4>
+                            <p>{{ chat.time }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="chat-input">
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="text" name="content" placeholder="Type your message here" required>
+                    <button type="submit" class="btn btn-link" style="width: 4px; height: 40px; background-color: #fff;" ><i class="fa-solid fa-paper-plane" style="font-size: 22px;"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

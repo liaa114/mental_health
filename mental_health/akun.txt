@@ -1,0 +1,28 @@
+- superuser
+	username : admin
+	email : admin1@gmail.com
+	password : admin123
+- psikolog
+	username : Emilia
+	password : Liafn253
+	username : Leonni
+	password : Fitriah123
+	username : Alfina
+	password : Fina12345
+	username : Rama
+	password : Julika123
+	username : Nerin
+	password : Kalyana123
+	username : Alif
+	password : Gween123
+	username : Meiza
+	password : Anggraini123
+	username : Amel
+	password : Arifin123
+	username : Imelda
+	password : Wijar123
+	username : Zello
+	password : Saputra123
+- user
+	username : Agustian
+	password : Tegar253

@@ -1,0 +1,74 @@
+{% extends "patientbase.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>    
+<link rel="stylesheet" href="{% static 'css/about_us.css' %}">
+
+<section style="margin-top: 1130px; height: 500px; width: 900px;">
+  <center>
+    <b><h1 style="margin-bottom: 60px; font-size: 40px;">About Us</h1></b>
+    <h1 style="margin-bottom: 100px;">"We are a team that has developed this mental health application with the aim of providing support and solutions for individuals facing mental challenges. We are here to help you through difficult days. Here, you can choose a psychologist within your budget to discuss and talk about all your concerns. The psychologists we offer are trusted professionals who always prioritize customer privacy. We are dedicated to safeguarding your personal information and data wholeheartedly. So, feel free to share your stories with us."</h1>
+  </center>
+</section>
+<center style="margin-top: 75px;">
+    <b><h1 style="font-size: 40px">Our Team</h1></b>
+</center>
+<section>
+  <div class="container">
+    <div class="card">
+      <div class="card-content">
+        <div class="image">
+          <img src="{% static 'img/lia.jpg' %}">
+        </div>
+        <div class="name-education">
+          <span class="name">Emilia Fresia Nandela</span>
+          <span class="education"><p>212102005</p></span>
+          <h5>Informatika</h5>
+          <h5>Universitas Jendral Achmad Yani Yogyakarta</h5>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-content">
+        <div class="image">
+          <img src="{% static 'img/tegar.jpg' %}">
+        </div>
+
+        <div class="name-education">
+          <span class="name">Tegar Agustian</span>
+          <span class="education"><p>212102033</p></span>
+          <h5>Informatika</h5>
+          <h5>Universitas Jendral Achmad Yani Yogyakarta</h5>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<center>
+  <b><h1 style="font-size: 40px; margin-top: 30px;">Our Social Media</h1></b>
+</center>
+<section>
+  <div class="wrapper">
+    <a href="#" class="button" style="float: left; text-decoration: none; color: black;">
+      <div class="icon">
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
+     <span>Whatsapp</span>
+    </a>
+    <a href="#" class="button" style="float: left; text-decoration: none; color: black;">
+      <div class="icon">
+        <i class="fab fa-instagram"></i>
+      </div>
+      <span>Instagram</span>
+    </a>
+    <a href="#" class="button" style="float: left; text-decoration: none; color: black;">
+     <div class="icon">
+        <i class="fa-brands fa-tiktok"></i>
+      </div>
+      <span>TikTok</span>
+    </a>
+ </div>
+</section>
+{% endblock content %}

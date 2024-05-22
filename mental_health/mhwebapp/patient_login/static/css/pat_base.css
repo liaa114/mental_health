@@ -1,0 +1,21 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.base__banner{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0px;
+}
+.base__navbar{
+    position: relative;
+    width: 100%;
+    height: 70px;
+}
+.navbar{
+    height: 70px !important;
+}
